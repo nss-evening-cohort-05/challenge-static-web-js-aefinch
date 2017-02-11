@@ -1,3 +1,4 @@
+var inputObj = {};
 // Get a reference to the button element in the DOM
 var button = document.getElementById("grow");
 button.onclick = GrowATree;
@@ -8,20 +9,20 @@ var symbolInput = document.getElementById("treeSymbol");
 // Create a function to build the symbol tree
 function GrowATree(inputPair) {
 
-	// Retrieve values input by user
-	var rows = document.getElementById("treeHeight").value;
-	var symbol = document.getElementById("treeSymbol").value;
+	// Store values input by user in object
+	inputObj.rows = heightInput.value;
+	inputObj.symbol = symbolInput.value;
 
 	// Display an alert if one of the input boxes is left empty
-	if (rows ==="" || symbol==="") {
+	if (inputObj.rows ==="" || inputObj.symbol==="") {
 		alert("Both fields must contain a value!");
 	}
 	
 	// Determine the total row width
-	var rowWidth = (rows*2)-1
+	var rowWidth = (inputObj.rows*2)-1
 
 	// Build each row and print to console
-	for (i=1; i<rows+1; i++) {
+	for (i=1; i<inputObj.rows+1; i++) {
 		var eachRow="";
 		var numSymbol = 2*(i-1)+1
 		var spaces = (rowWidth-numSymbol)/2;
@@ -30,7 +31,7 @@ function GrowATree(inputPair) {
 			eachRow+=" ";
 		}
 		for (k=0; k<numSymbol; k++) {
-			eachRow+=symbol;
+			eachRow+=inputObj.symbol;
 		}
 		console.log(eachRow);
 		if (spaces <1) {
